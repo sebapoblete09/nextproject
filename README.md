@@ -1,36 +1,16 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CrunchyClon
 
-## Getting Started
+Primer proyecto realizado en NextJs, en principio era un clon de crunchyrol, pero limitado en cuanto a catalogo y no permite reproducir videos, sin embargo la idea era intentar imitar lo ams posible el estilo de la pagina, finalmente es probable que sea una pagina tipo whakoom, es decir una pagina con un catalogo de animes donde poder marcar los animes que ya vi, los que quiero ver, los que estoy viendo, añadirlos a fav, a una biblioteca o una lista etc
 
-First, run the development server:
+FUNCIONALIDADES:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Mostrar listado o catalogo de animes
+2. Filtrado de animes
+3. mostrar seccion de recomendados segun preferencias del perfil
+4. Agregar a favoritos
+5. agregar a biblioteca, con un estado: (ver, ya visto, estoy viendo)
+6. opcioanl, añadir calificacion y/o comentarios
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+opcional:
+Inicio de sesion
+crear y editar perfil
