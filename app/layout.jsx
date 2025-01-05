@@ -1,8 +1,8 @@
-import NavBar from "../Components/NavBar";
+import NavBar from "../Components/navigation/NavBar";
 
 export const metadata = {
-    title: "Primera Pagina Nextjs",
-    descripcion: "Primera Pagina funcional con nextjs, se probara diferentes componentes y funcionalidades"
+    title: "CrunchyClon",
+    descripcion: "Clon personal de crunchyroll"
 }
 export default function RootLayout({children}){
     return (
@@ -10,6 +10,7 @@ export default function RootLayout({children}){
             <body>
                 <NavBar/>
                 <main>{children}</main>
+                <footer>Footer</footer>
 
             </body>
         </html>

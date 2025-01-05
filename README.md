@@ -6,7 +6,7 @@ FUNCIONALIDADES:
 
 1. Mostrar listado o catalogo de animes
 2. Filtrado de animes
-3. mostrar seccion de recomendados segun preferencias del perfil
+3. mostrar seccion de recomendados segun preferencias del perfil \*depende de los opcional
 4. Agregar a favoritos
 5. agregar a biblioteca, con un estado: (ver, ya visto, estoy viendo)
 6. opcioanl, añadir calificacion y/o comentarios
@@ -14,3 +14,8 @@ FUNCIONALIDADES:
 opcional:
 Inicio de sesion
 crear y editar perfil
+
+------Secciones pagina web:
+Inicio: mostrar recomendaciones, ultimos animes de la temporada(opcional), mas cosas, info basica
+Biblioteca/Favoritos (nombre provisional): muestra los animes marcados como favoritos y su estado
+lista: crear una lista donde poner animes que uno seleccine, tipo lista de reproduccion

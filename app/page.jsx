@@ -11,12 +11,16 @@ function HomePage(){
 
     return (
             <div>
-                <h1> Pagina de Inicio</h1>
+            <div>
+                <h2>Hero wrapped carrousel</h2>
+            </div>
+            <div>
+                recomendados, ultimos vistos y mas
+            </div>
 
-                <div>
-                    <h2>Contador</h2>
-                    <button onClick={contador}>{cont}</button>
-                </div>
+            <div>
+                ver catalogo completo
+            </div>
             </div>
         
     )
