@@ -1,4 +1,5 @@
-import NavBar from "../Components/navigation/NavBar";
+import NavBar from "@/navigation/NavBar";
+import './globals.css'
 
 export const metadata = {
     title: "CrunchyClon",

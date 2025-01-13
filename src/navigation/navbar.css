@@ -1,0 +1,34 @@
+.navbar {
+  background-color: #23252b;
+  display: flex;
+  align-items: center;
+
+}
+
+.navbar h1 {
+  margin-left: 50px;
+  cursor:pointer;
+}
+
+.navbar h1:hover{
+  color:#ff640a
+}
+.navbar ul {
+  display: flex;
+  gap: 16;
+}
+
+.navbar ul li {
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+}
+
+.navbar ul li :hover {
+  color: #ff640a;
+}
+
+.navigation {
+  text-decoration: none;
+}
