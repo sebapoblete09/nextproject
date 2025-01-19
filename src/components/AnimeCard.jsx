@@ -1,34 +1,41 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function AnimeCard({Anime}){
 
-    const [fav, setIsFav] = useState(Anime.IsFav)
+    const [fav, setIsFav] = useState(false)
+
+    //Guardar los fav en localstargue para un poco de consistencia
+    useEffect(()=>{
+        const animesFav = localStorage.getItem(`anime_${Anime.id}`)
+        if (animesFav !== null) {
+            setIsFav(JSON.parse(animesFav));
+        }else {
+            setIsFav(Anime.IsFav); // Estado inicial basado en el objeto Anime
+          }
+    }, [Anime.id, Anime.IsFav])
 
     const tooglefav = ()=>{
         setIsFav(!fav)
+        localStorage.setItem(`anime_${Anime.id}`, JSON.stringify(!fav))
+        
     }
+
     return (
 
-        <div className="hover:bg-gray-800 p-2 rounded ">
-            <img src={Anime.Portada} alt={Anime.Nombre} height={500} />
+        <div className="hover:bg-gray-600 p-2 rounded ">
+            <img src={Anime.images.webp.image_url} alt={Anime.title} height={500} loading="lazy"/>
             <div>
-                <h3 className="py-2">{Anime.Nombre}</h3>
-                <p>{Anime.Descripcion}</p>
-                <span className="text-slate-500">{Anime.Estado}</span> 
+                <h3 className="py-2">{Anime.title}</h3>
+                <p className="truncate">{Anime.aired.prop.from.year}</p>
+                <span className="text-slate-500">{Anime.status}</span> 
             </div>
-            {fav ? (
-                <div className="flex  justify-end">
-                    <button className="bg-[#ff640a] rounded-sm p-2 mt-4"
-                    onClick={tooglefav}>Favorito</button>
-                </div>
-
+            <div className="flex justify-end">
+                {fav ? (<button className="bg-[#ff640a] p-2 rounded-lg">Favorito</button>
             ):(
-                <div className="flex justify-end">
-                    <button className="bg-slate-600 rounded-sm p-2 mt-4"
-                    onClick={tooglefav}>Favorito</button>
-                </div>
+                <button className="bg-neutral-700 p-2 rounded-lg">Favorito</button>
             )}
-            
+                
+            </div>
         </div>
             
     )
