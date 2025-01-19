@@ -11,6 +11,9 @@ function NavBar(){
                     <Link className="navigation hover:bg-gray-700 p-7" href="/">Inicio</Link>
                 </li>
                 <li>
+                    <Link className="navigation hover:bg-gray-700 p-7"  href="/Catalogo">Catalogo</Link>
+                </li>
+                <li>
                     <Link className="navigation hover:bg-gray-700 p-7"  href="/Favoritos">Favorios</Link>
                 </li>
                 <li>
