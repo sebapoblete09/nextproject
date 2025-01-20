@@ -1,7 +1,7 @@
 import mongoose, { mongo } from "mongoose";
 
 //defino la coleccion o tablba de los animes favoritos
-const AnimeScheme = new mongoose.Scheme({
+const AnimeScheme = new mongoose.Schema({
     id: {type: Number, required: true},
     tittle: {type: String,required:true},
     synopsis: {type: String,required:true},
