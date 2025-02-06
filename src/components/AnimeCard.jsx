@@ -3,22 +3,42 @@ import { useState, useEffect } from "react";
 function AnimeCard({Anime}){
 
     const [fav, setIsFav] = useState(false)
+    const [data, setData] = useState({})
 
-    //Guardar los fav en localstargue para un poco de consistencia
-    useEffect(()=>{
-        const animesFav = localStorage.getItem(`anime_${Anime.id}`)
-        if (animesFav !== null) {
-            setIsFav(JSON.parse(animesFav));
-        }else {
-            setIsFav(Anime.IsFav); // Estado inicial basado en el objeto Anime
-          }
-    }, [Anime.id, Anime.IsFav])
-
-    const tooglefav = ()=>{
-        setIsFav(!fav)
-        localStorage.setItem(`anime_${Anime.id}`, JSON.stringify(!fav))
+    //ver si el anime ya esta como favorito
+    /*useEffect(()=>{
         
-    }
+    }, [Anime.id, Anime.IsFav])*/
+
+    const tooglefav = async ()=>{
+        setIsFav(!fav)
+        //Agrega el anime a favoritos
+        const animeData =  {
+            id: Anime.mal_id,
+            title: Anime.title,
+            synopsis: Anime.synopsis,
+            Estado: "Viendo",// por defecto sera viendo, por el momento+
+            image_url: Anime.images.webp.image_url
+        }
+        setData(animeData)
+
+            try{
+                const response = await fetch("/api/animes",{
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(animeData)
+                })
+
+                const result =  await response.json()
+                console.log("Anime añadido a favorito: " + animeData.title)
+
+            }catch(error){
+                console.log(error)
+            }
+        }     
+    
 
     return (
 
@@ -30,9 +50,9 @@ function AnimeCard({Anime}){
                 <span className="text-slate-500">{Anime.status}</span> 
             </div>
             <div className="flex justify-end">
-                {fav ? (<button className="bg-[#ff640a] p-2 rounded-lg">Favorito</button>
+                {fav ? (<button className="bg-[#ff640a] p-2 rounded-lg" onClick={tooglefav}>Favorito</button>
             ):(
-                <button className="bg-neutral-700 p-2 rounded-lg">Favorito</button>
+                <button className="bg-neutral-700 p-2 rounded-lg" onClick={tooglefav}>Favorito</button>
             )}
                 
             </div>

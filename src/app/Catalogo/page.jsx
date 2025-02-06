@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
-import AnimeCard from "@/components/AnimeCard";
+import AnimeCard from "../../components/AnimeCard";
 function CatPage(){
 
     const [AnimesList, setAnimesList] = useState([])
