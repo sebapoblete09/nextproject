@@ -1,6 +1,7 @@
 import { NextResponse} from "next/server";
 import { db } from "../../../lib/firebaseconfig";
-import { collection, getDocs, addDoc } from "firebase/firestore"; //esto desde la documentacion de firebase
+import { collection, getDocs, addDoc, doc,setDoc } from "firebase/firestore"; //esto desde la documentacion de firebase
+
 
 //Obtener Animes favoritos
 export async function GET() {
@@ -25,16 +26,27 @@ export async function POST(req){
     const data = await req.json();
 
     //addDoc crea el id aleatorio, por el momento quedara con id aleatorio, la idea es que el id del doc sea el mismo que el anime
-    const docRef = await addDoc(collection(db,"Favoritos"),{
+    /*const docRef = await addDoc(collection(db,"Favoritos"),{
         id: data.id,
         Estado: data.Estado,
         synopsis: data.synopsis,
         title: data.title,
         image_url: data.image_url
+      }*/
+
+        if (!data.id) {
+          throw new Error("ID no válido en la request");
       }
-    )
-     //  Responder con el ID del documento agregado
-     return NextResponse.json({ id: docRef.id }, { status: 200 });
+
+      const docRef = doc(db, "Favoritos", String(data.id)); // Asegurar que sea string
+      await setDoc(docRef, {
+          id: data.id,
+          Estado: data.Estado,
+          synopsis: data.synopsis,
+          title: data.title,
+          image_url: data.image_url
+      });
+      return NextResponse.json({ id: data.id }, { status: 200 })
 
   }catch(error){
     return NextResponse.json(
