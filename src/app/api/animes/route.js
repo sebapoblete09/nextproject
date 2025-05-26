@@ -1,6 +1,6 @@
 import { NextResponse} from "next/server";
 import { db } from "../../../lib/firebaseconfig";
-import { collection, getDocs, addDoc, doc,setDoc } from "firebase/firestore"; //esto desde la documentacion de firebase
+import { collection, getDocs, doc,setDoc, deleteDoc } from "firebase/firestore"; //esto desde la documentacion de firebase
 
 
 //Obtener Animes favoritos
@@ -24,18 +24,8 @@ export async function GET() {
 export async function POST(req){
   try{
     const data = await req.json();
-
-    //addDoc crea el id aleatorio, por el momento quedara con id aleatorio, la idea es que el id del doc sea el mismo que el anime
-    /*const docRef = await addDoc(collection(db,"Favoritos"),{
-        id: data.id,
-        Estado: data.Estado,
-        synopsis: data.synopsis,
-        title: data.title,
-        image_url: data.image_url
-      }*/
-
         if (!data.id) {
-          throw new Error("ID no válido en la request");
+          throw new Error("ID no válido en la solicitud");
       }
 
       const docRef = doc(db, "Favoritos", String(data.id)); // Asegurar que sea string
@@ -53,5 +43,22 @@ export async function POST(req){
       {error: "Error al agregar a favorito"},
       { status: 500}
     )
+  }
+}
+
+
+//Eliminar un anime de favoritos
+export async function DELETE(req){
+  try{
+    const data = await req.json();
+    if(!data.id){
+      throw new Error("ID no valido en la solicitud")
+    }
+
+    const docRef = doc(db,"Favoritos",String(data.id));
+    await deleteDoc(docRef);
+    return NextResponse.json({ message: "Eliminado correctamente" }, { status: 200 });
+  }catch(error){
+    return NextResponse.json({error: "Error al eliminar de favoritos"},{status:500})
   }
 }

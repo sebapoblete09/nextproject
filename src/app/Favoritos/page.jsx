@@ -17,6 +17,10 @@ function FavPage(){
         fetchAnimes();
     },[])
 
+    //eliminar el anime de la lista
+    const handleDelete = (id) => {
+        setAnimes((prev)=> prev.filter((anime)=>anime.id !==id));
+    }
 
 
     return (
@@ -28,6 +32,7 @@ function FavPage(){
                         <FavCard
                         key={anime.id}
                         Anime = {anime}
+                        onDelete={handleDelete}
                         />
                     ))}
 
