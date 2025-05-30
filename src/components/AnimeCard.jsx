@@ -1,16 +1,31 @@
 "use client"
 import { useState, useEffect } from "react";
-function AnimeCard({Anime}){
+export default  function AnimeCard({Anime}){
 
     const [fav, setIsFav] = useState(false)
     const [data, setData] = useState({})
 
+
     //ver si el anime ya esta como favorito
-    /*useEffect(()=>{
-        
-    }, [Anime.id, Anime.IsFav])*/
+    useEffect(()=>{
+        const fetchAnimeData = async () => {
+            try{
+                const response = await fetch(`/api/animes/${Anime.mal_id}`);
+                if(response.ok){
+                    setIsFav(true)
+                }
+
+                
+            }catch(error){
+                console.error("Error al buscar el anime", error);
+                return 0;
+            };
+        };
+        fetchAnimeData();
+    }, [Anime.mal_id]);
 
     const tooglefav = async ()=>{
+        
         setIsFav(!fav)
         //Agrega el anime a favoritos
         const animeData =  {
@@ -22,22 +37,23 @@ function AnimeCard({Anime}){
         }
         setData(animeData)
 
-            try{
-                const response = await fetch("/api/animes",{
-                    method: "POST",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(animeData)
-                })
+        try{
+             const response = await fetch("/api/animes",{
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(animeData)
+            })
 
-                const result =  await response.json()
-                console.log("Anime añadido a favorito: " + animeData.title)
+                    const result =  await response.json()
+                    console.log("Anime añadido a favorito: " + animeData.title)
 
-            }catch(error){
-                console.log(error)
-            }
-        }     
+                }catch(error){
+                    console.log(error)
+                }
+        
+    }     
     
 
     return (
@@ -61,4 +77,3 @@ function AnimeCard({Anime}){
     )
 }
 
-export default AnimeCard;
