@@ -11,7 +11,7 @@ function CatPage(){
         const fetchAnimeData = async () =>{
             setLoading(true);
             try{
-                const response = await fetch("https://api.jikan.moe/v4/anime")//hace el llamado a la api para traer la info de todo
+                const response = await fetch("https://api.jikan.moe/v4/anime?limit=10")//hace el llamado a la api para traer la info de todo
                 const data = await response.json();// transforma la info a json
                 setAnimesList(data.data)//le paso la data del json
             }catch(error){

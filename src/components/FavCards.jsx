@@ -9,7 +9,7 @@ function FavCard({Anime, onDelete}){
        }
 
         try{
-            const response = await fetch("api/animes",{
+            const response = await fetch("/api/animes",{
                 method: "DELETE",
                 headers:{
                     'content-type': 'application/json'
