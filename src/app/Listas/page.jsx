@@ -1,12 +1,8 @@
 function ListPage(){
     return (
             <div>
-                <h1> Listas</h1>
-                <div className="bg-blue-500 text-red-900">Hola</div>
+                <h1> PROXIMAMENTE!!</h1>
 
-                <div>
-                    <h2>Contador</h2>
-                </div>
             </div>
         
     )
