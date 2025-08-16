@@ -24,7 +24,7 @@ function NavBar() {
 
       {/* Menú */}
       <ul className={`menu ${isOpen ? "open" : ""}`}>
-        <button onClick={() => setIsOpen(false)}>X</button>
+        
         <li>
           <Link className="navigation" href="/">Inicio</Link>
         </li>

@@ -54,23 +54,17 @@
   .menu {
     display: none;
     flex-direction: column;
-    background: rgba(35, 37, 43, 0.95);
-    position: fixed;
-    top: 0;
+    background: #23252b;
+    position: absolute;
+    top: 60px; /* ajusta según el alto del navbar */
     right: 0;
-    height: 100vh; /* toda la pantalla */
-    width: 70%; /* ajusta según prefieras */
-    padding: 2rem;
-    backdrop-filter: blur(8px); /* efecto blur */
-    z-index: 1000;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(100%); /* oculto */
+    width: 200px;
+    padding: 1rem;
   }
 
   .menu.open {
-  display: flex;
-  transform: translateX(0); /* aparece */
-}
+    display: flex;
+  }
 
   .hamburger {
     display: block;
