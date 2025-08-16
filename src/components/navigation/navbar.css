@@ -4,6 +4,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
+  position: relative; /* importante */
+  z-index: 9999;      /* lo pone siempre encima */
 }
 
 /* Logo */
@@ -52,17 +54,23 @@
   .menu {
     display: none;
     flex-direction: column;
-    background: #23252b;
-    position: absolute;
-    top: 60px; /* ajusta según el alto del navbar */
+    background: rgba(35, 37, 43, 0.95);
+    position: fixed;
+    top: 0;
     right: 0;
-    width: 200px;
-    padding: 1rem;
+    height: 100vh; /* toda la pantalla */
+    width: 70%; /* ajusta según prefieras */
+    padding: 2rem;
+    backdrop-filter: blur(8px); /* efecto blur */
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%); /* oculto */
   }
 
   .menu.open {
-    display: flex;
-  }
+  display: flex;
+  transform: translateX(0); /* aparece */
+}
 
   .hamburger {
     display: block;
