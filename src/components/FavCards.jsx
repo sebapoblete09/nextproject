@@ -29,12 +29,14 @@ function FavCard({Anime, onDelete}){
 
     return (
 
-        <div className="hover:bg-gray-600 p-2 rounded ">
-            <img src={Anime.image_url} alt={Anime.title} height={500} loading="lazy"/>
-            <div>
-                <h3 className="py-2">{Anime.title}</h3>
-                <p className="truncate">{Anime.Estado}</p>
-                <span className="text-slate-500">Anime.status</span> 
+        <div className="hover:bg-gray-600 p-2 rounded flex flex-col justify-between h-[550px]">
+            <img src={Anime.image_url} 
+            alt={Anime.title} 
+            className="h-[350px] w-full object-cover rounded"
+            loading="lazy"/>
+            <div className="min-h-[100px]">
+                <h3 className="py-2 font-bold">{Anime.title}</h3>
+                <span className="text-slate-300">{Anime.Estado}</span> 
             </div>
             <div className="flex justify-end">
             <button className="bg-[#ff640a] p-2 rounded-lg" onClick={tooglefav}>
