@@ -1,45 +1,45 @@
-"use client"
-import Link from "next/link";
+"use client";
 import { useState } from "react";
-import "./navbar.css"
-function NavBar(){
+import Link from "next/link";
+import "./navbar.css";
 
-    const [isOpen, setIsOpen] = useState(false);
+function NavBar() {
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
-        <nav className="navbar py-5 gap-10">
+  return (
+    <nav className="navbar py-5">
+      {/* Logo */}
+      <Link href="/" className="navigation">
+        <h1 className="text-3xl font-bold">CrunchyClon</h1>
+      </Link>
 
-            {/* Logo */}
-            <Link  href="/" className="navigation">
-                <h1 className="text-3xl font-bold">CrunchyClon</h1>
-            </Link>
+      {/* Botón hamburguesa (solo visible en móvil) */}
+      <button
+        className="hamburger"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label="Toggle menu"
+      >
+        ☰
+      </button>
 
-            {/* Boton version movil */}
-            <button className="hamburger"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu">
-                ☰
-            </button>
-            
-            {/*Menu*/}
-            <ul className={`menu ${isOpen ? "open" : ""}`}>
-                <li>
-                    <Link className="navigation hover:bg-gray-700 p-7" href="/">Inicio</Link>
-                </li>
-                <li>
-                    <Link className="navigation hover:bg-gray-700 p-7"  href="/Catalogo">Catalogo</Link>
-                </li>
-                <li>
-                    <Link className="navigation hover:bg-gray-700 p-7"  href="/Favoritos">Favoritos</Link>
-                </li>
-                <li>
-                    <Link  className="navigation hover:bg-gray-700 p-7"  href="/Listas">Listas</Link>
-                </li>
-            </ul>
-
-        </nav>
-        
-    )
+      {/* Menú */}
+      <ul className={`menu ${isOpen ? "open" : ""}`}>
+        <button onClick={() => setIsOpen(false)}>X</button>
+        <li>
+          <Link className="navigation" href="/">Inicio</Link>
+        </li>
+        <li>
+          <Link className="navigation" href="/Catalogo">Catalogo</Link>
+        </li>
+        <li>
+          <Link className="navigation" href="/Favoritos">Favoritos</Link>
+        </li>
+        <li>
+          <Link className="navigation" href="/Listas">Listas</Link>
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
 export default NavBar;
