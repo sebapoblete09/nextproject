@@ -2,33 +2,69 @@
   background-color: #23252b;
   display: flex;
   align-items: center;
-
+  justify-content: space-between;
+  padding: 0 1rem;
 }
 
+/* Logo */
 .navbar h1 {
-  margin-left: 50px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.navbar h1:hover{
-  color:#ff640a
+.navbar h1:hover {
+  color: #ff640a;
 }
-.navbar ul {
+
+/* Menú general */
+.menu {
   display: flex;
-  gap: 16;
+  gap: 1rem;
 }
 
-.navbar ul li {
+.menu li {
   list-style: none;
-  align-items: center;
-  justify-content: center;
   font-size: large;
 }
 
-.navbar ul li :hover {
+.menu li:hover {
   color: #ff640a;
 }
 
 .navigation {
   text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
+  color: white;
+}
+
+/* Botón hamburguesa */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Estilos para móviles */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #23252b;
+    position: absolute;
+    top: 60px; /* ajusta según el alto del navbar */
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+  }
+
+  .menu.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }
